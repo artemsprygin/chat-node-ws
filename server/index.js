@@ -11,7 +11,7 @@ s.on('connection',(ws) => {
         return;
     }
 
-    console.log('Recieved ' + message);
+    console.log('From ' + message.data + ' recieved');
     // if (message == 'hello') {
     //   ws.send('hi from server');
     // }

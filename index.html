@@ -11,9 +11,15 @@
   <div id="log"></div>
   <div id="sendCtrls">
   <input type="text" placeholder="Your message here" id="text">
-  <button>Send</button>
+  <button id="id_of_button">Send</button>
   </div>
 <script>
+  // $("#text").keyup(function(event) {
+  //   if (event.keyCode === 13) {
+  //       $("#id_of_button").click();
+  //   }
+  // });
+  const input = document.getElementById('text');
   const name = prompt('What is your name?');
   const log = document.getElementById('log');
   const sock = new WebSocket('ws://localhost:5001');
@@ -34,6 +40,13 @@
     const json = JSON.parse(event.data);
 
     log.innerHTML+=json.name+": "+json.data+"<br>";
+  });
+
+  input.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    if (event.code===13) {
+      document.getElementById('id_of_button').click();
+    }
   });
 
   document.querySelector('button').onclick = () => {
